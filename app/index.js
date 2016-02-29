@@ -33,6 +33,12 @@ function fetch (input) {
   })  
 }
 
+function ready () {
+  search.show()
+  message.update('Search for a paper.')
+  progress.hide()
+}
+
 // welcome message
 message.update('Initializing...')
 search.hide()
@@ -42,12 +48,10 @@ var downloaded = 0
 var timer = setInterval(function () {
   if (downloaded >= 100) {
     clearInterval(timer)
-    search.show()
-    message.update('Search for a paper.')
-    progress.hide()
+    ready()
   }
   progress.update(downloaded)
-  downloaded += 2
+  downloaded += 10
 }, 50)
 
 // update list on search
